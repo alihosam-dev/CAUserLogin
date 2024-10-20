@@ -18,6 +18,8 @@ public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterfa
 
     private final Map<String, User> users = new HashMap<>();
 
+    private String currentUser;
+
     @Override
     public boolean existsByName(String identifier) {
         return users.containsKey(identifier);
@@ -35,6 +37,16 @@ public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterfa
 
     @Override
     public void setCurrentUser(String name) {
+        this.currentUser = name;
+    }
+
+    /**
+     * Gets the current user to the name given.
+     * @return String
+     */
+    @Override
+    public String getCurrentUser() {
+        return this.currentUser;
     }
 
     @Override
